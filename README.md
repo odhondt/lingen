@@ -1,0 +1,1 @@
+# LINGEN a minimal linear drumming score generator
