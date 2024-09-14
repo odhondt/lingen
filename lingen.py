@@ -1,6 +1,6 @@
 import random
 
-def generate_drum_sequence(patterns, num_measures, over_the_bar=False):
+def generate_drum_sequence(patterns, num_measures):
     """
     Generates a random sequence of patterns, cuts it to the required number of notes,
     and formats it into measures of 4/4 with groups of 4 16th notes and '|' every 16 notes.
@@ -8,8 +8,6 @@ def generate_drum_sequence(patterns, num_measures, over_the_bar=False):
     Args:
         patterns (list): List of drum sticking patterns (e.g., ["RLLK", "RLK"]).
         num_measures (int): Number of 4/4 measures to generate.
-        over_the_bar (bool): If True, the patterns will continue across measures. If False,
-                             patterns will be cut exactly to fit each measure.
 
     Returns:
         str: A string representing the sequence of drum patterns, grouped in 4s and measures of 16.
