@@ -17,8 +17,8 @@ _Note:_ there is a `ternary` option to generate sextuplets instead of 16th notes
 
 ### How I use it
 
-- I first learn a pattern using only snare / kick with a metronome
+- I first learn a pattern on kick and snare with a metronome
 - Once I know it well enough I start
-    - Adding accents on some singles
     - Orchestrating it around the snare and toms to play it as a fill
-    - Trying to play it as a linear groove (right hand on hats)
+    - Adding accents on some singles
+    - Trying to play it as a linear groove (right hand on hats, left on snare)
