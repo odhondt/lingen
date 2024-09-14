@@ -21,3 +21,5 @@ _Note:_ there is a `ternary` option to generate sextuplets instead of 16th notes
     - Orchestrating it around the snare and toms to play it as a fill
     - Adding accents on some singles
     - Trying to play it as a linear groove (right hand on hats, left on snare)
+
+Have fun! :partying_face:
