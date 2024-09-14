@@ -1,5 +1,4 @@
 import random
-from fpdf import FPDF
 
 def generate_drum_sequence(patterns, num_measures, over_the_bar=False):
     """
@@ -33,29 +32,3 @@ def generate_drum_sequence(patterns, num_measures, over_the_bar=False):
     formatted_sequence = " | ".join([" ".join(grouped_sequence[i:i+4]) for i in range(0, len(grouped_sequence), 4)])
     
     return formatted_sequence
-
-def generate_drum_pdf(sequence, filename="drum_score.pdf"):
-    """
-    Creates a PDF with the given drum sequence in the same format as the string.
-
-    Args:
-        sequence (str): The sequence of drum patterns as a string (output from `generate_drum_sequence`).
-        filename (str): The name of the PDF file to save (default is "drum_score.pdf").
-
-    Returns:
-        None
-    """
-    pdf = FPDF()
-    pdf.add_page()
-
-    # Set font for drum sequence
-    pdf.set_font('Arial', '', 12)
-
-    # Write the full sequence in one line without separating measures by lines
-    pdf.multi_cell(0, 10, sequence)
-
-    pdf.output(filename)
-
-
-
-
