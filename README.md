@@ -15,7 +15,7 @@ The output looks like:
 
 _Note:_ there is a `ternary` option to generate sextuplets instead of 16th notes.
 
-### How I use it
+### How I use it in practice
 - I first learn a pattern on kick and snare with a metronome
 - Once I know it well enough I start
     - Orchestrating it around the snare and toms to play it as a fill
