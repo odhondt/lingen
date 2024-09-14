@@ -6,6 +6,7 @@ I always struggle to find new drumming practice ideas, so I'll let the computer 
 ### Example:
 ```python
 from lingen import generate_drum_sequence
+patterns = ["KRL", "RLL"]
 sequence = generate_drum_sequence(patterns, num_measures=4)
 print(sequence)
 ```
