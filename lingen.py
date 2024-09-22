@@ -1,5 +1,7 @@
 import random
-
+from pylatex import Document, Section, Command, NewPage
+from pylatex.utils import NoEscape
+import os
 
 def generate_drum_sequence(patterns, num_measures, ternary=False):
     """
@@ -42,3 +44,51 @@ def generate_drum_sequence(patterns, num_measures, ternary=False):
         [" ".join(grouped_sequence[i:i+gr]) for i in range(0, len(grouped_sequence), gr)])
 
     return formatted_sequence
+
+def generate_latex_pdf(sequence, filename="drum_score.pdf", font="lmodern", letter_spacing=0.2):
+    """
+    Generates a PDF for the drum sequence using pylatex with custom font and spacing.
+
+    Args:
+        sequence (str): The sequence of drum patterns as a string (output from `generate_drum_sequence`).
+        filename (str): The name of the PDF file to save (default is "drum_score.pdf").
+        font (str): LaTeX font to use (default is "lmodern").
+        letter_spacing (float): Additional space between letters in em units (default is 0.2).
+
+    Returns:
+        None
+    """
+    # Create a LaTeX document
+    doc = Document()
+    
+    # Add custom font and packages for formatting
+    doc.preamble.append(Command('usepackage', 'lmodern'))  # Use Latin Modern font
+    doc.preamble.append(Command('usepackage', 'microtype'))  # Improve typesetting
+    doc.preamble.append(Command('usepackage', 'setspace'))  # For spacing adjustments
+
+    # Set the custom letter spacing (microtype's `\textls` command)
+    doc.preamble.append(NoEscape(f"\\newcommand{{\\customspacing}}[1]{{\\textls[{int(letter_spacing * 100)}]{{#1}}}}"))
+    doc.append(NoEscape('\\begin{center}'))
+    doc.append(NoEscape('\\large'))
+    
+    # Add the sequence with custom spacing
+    for char in sequence:
+        if char == " ":
+            # Add a regular space
+            doc.append(" ")
+        elif char == "|":
+            # Add measure separator with space
+            doc.append(" | ")
+        else:
+            # Add each letter with custom spacing
+            doc.append(NoEscape(f"\\customspacing{{{char}}}"))
+
+    doc.append(NoEscape('\\end{center}'))
+
+    # Generate the PDF
+    doc.generate_pdf(filename.split(".pdf")[0], clean_tex=False)
+
+# Example usage
+patterns = ["RLLK", "RLK", "KLR", "RRLL"]
+sequence = generate_drum_sequence(patterns, 8, over_the_bar=True)  # Generate 8 measures
+generate_latex_pdf(sequence, "drum_score.pdf", font="lmodern", letter_spacing=0.3)
